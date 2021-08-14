@@ -4,7 +4,7 @@
 
 A NEAR client written in Go
 
-The goal of this project is to provide a fully featured NEAR cleint in Go. There is support for all NEAR RPC requests, including those that use signed transactions. Of course, there is room for improvement, especially with integration testing and a fully featured `KeyStore`, so please give it a spin and feel free to open a PR to help us improve the library. 
+The goal of this project is to provide a fully featured NEAR cleint in Go. There is support for most NEAR RPC requests, including those that use signed transactions. Of course, there is room for improvement, especially with integration testing and a fully featured `KeyStore`, so please give it a spin and feel free to open a PR to help us improve the library. 
 
 We're currently relying on [our fork of go-ethereum's JSON RPC client](https://github.com/textileio/go-ethereum) that adds support for named RPC parameters. That work is [pending PR](https://github.com/ethereum/go-ethereum/pull/22656) merge into their master branch.
 
