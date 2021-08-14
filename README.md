@@ -8,8 +8,6 @@ The goal of this project is to provide a fully featured NEAR cleint in Go. There
 
 We're currently relying on [our fork of go-ethereum's JSON RPC client](https://github.com/textileio/go-ethereum) that adds support for named RPC parameters. That work is [pending PR](https://github.com/ethereum/go-ethereum/pull/22656) merge into their master branch.
 
-Going to PR this
-
 ## Table of Contents
 
 - [Background](#background)
