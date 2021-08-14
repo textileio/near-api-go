@@ -67,7 +67,7 @@ Most other functionality is provided by the `Account` sub module. For example, y
 
 ```golang
 deposit, ok := (&big.Int{}).SetString("1000000000000000000000000", 10)
-res, err := c.NearClient.Account("<client account id>").FunctionCall(
+res, err := client.Account("<client account id>").FunctionCall(
   ctx,
   <contract account id>,
   "myTxnFunction",
