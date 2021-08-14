@@ -60,7 +60,12 @@ client, err := api.NewClient(config)
 Interact with top level functions like `CallFunction`, for example. It can be used for calling non-signed "view" functions.
 
 ```golang
-res, err := client.CallFunction(ctx, "<account id>", "myFunction", CallFunctionWithFinality("final"))
+res, err := client.CallFunction(
+  ctx,
+  "<account id>",
+  "myFunction",
+  CallFunctionWithFinality("final"),
+)
 ```
 
 Most other functionality is provided by the `Account` sub module. For example, you can call state-modifying functions that are sent as signed transactions, and even include a deposit while you're at it.
