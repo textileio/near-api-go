@@ -30,7 +30,7 @@ Import the required modules.
 
 ```golang
 import (
-  "github.com/textileio/near-api-go"
+  api "github.com/textileio/near-api-go"
   "github.com/textileio/near-api-go/keys"
   "github.com/textileio/near-api-go/transaction"
   "github.com/textileio/near-api-go/types"
@@ -64,7 +64,7 @@ res, err := client.CallFunction(
   ctx,
   "<account id>",
   "myFunction",
-  CallFunctionWithFinality("final"),
+  api.CallFunctionWithFinality("final"),
 )
 ```
 
