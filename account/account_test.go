@@ -5,6 +5,7 @@ import (
 
 	"github.com/ethereum/go-ethereum/rpc"
 	"github.com/stretchr/testify/require"
+	"github.com/textileio/near-api-go/keys"
 	"github.com/textileio/near-api-go/types"
 
 	"testing"
@@ -42,6 +43,21 @@ func TestIt(t *testing.T) {
 // 	require.NotNil(t, pubKey)
 // 	require.NotNil(t, accessKeyView)
 // }
+
+func TestViewAccessKey(t *testing.T) {
+	a, cleanup := makeAccount(t)
+	defer cleanup()
+	pkey, err := keys.NewPublicKeyFromString("ed25519:H9k5eiU4xXS3M4z8HzKJSLaZdqGdGwBG49o7orNC4eZW")
+	require.NoError(t, err)
+	v, err := a.ViewAccessKey(ctx, pkey)
+	require.NoError(t, err)
+	require.NotNil(t, v)
+
+	pkey, err = keys.NewPublicKeyFromString("ed25519:H9k5eiU4xXS3M4zH8zKJSLaZdqGdGwBG49o7orNC4eZW")
+	require.NoError(t, err)
+	_, err = a.ViewAccessKey(ctx, pkey)
+	require.Error(t, err)
+}
 
 // func TestSignTransaction(t *testing.T) {
 // 	a, cleanup := makeAccount(t)
@@ -85,7 +101,7 @@ func makeAccount(t *testing.T) (*Account, func()) {
 		NetworkID: "testnet",
 		// Signer:    keys,
 	}
-	a := NewAccount(config, "<account id>")
+	a := NewAccount(config, "client.chainlink.testnet")
 	return a, func() {
 		rpcClient.Close()
 	}

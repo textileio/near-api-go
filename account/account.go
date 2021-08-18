@@ -116,9 +116,19 @@ func (a *Account) FindAccessKey(
 
 	// TODO: Lookup answer in a cache first.
 
+	ret, err := a.ViewAccessKey(ctx, &pubKey)
+	if err != nil {
+		return nil, nil, fmt.Errorf("viewing access key: %v", err)
+	}
+
+	return &pubKey, ret, nil
+}
+
+// ViewAccessKey gets the access key view for the provided public key associated with the account.
+func (a *Account) ViewAccessKey(ctx context.Context, pubKey *keys.PublicKey) (*AccessKeyView, error) {
 	pubKeyStr, err := pubKey.ToString()
 	if err != nil {
-		return nil, nil, fmt.Errorf("converting public key to string: %v", err)
+		return nil, fmt.Errorf("converting public key to string: %v", err)
 	}
 
 	req := &itypes.QueryRequest{
@@ -139,10 +149,10 @@ func (a *Account) FindAccessKey(
 
 	// var res AccessKeyView
 	if err := a.config.RPCClient.CallContext(ctx, &resp, "query", rpc.NewNamedParams(req)); err != nil {
-		return nil, nil, fmt.Errorf("calling rpc: %v", util.MapRPCError(err))
+		return nil, fmt.Errorf("calling rpc: %v", util.MapRPCError(err))
 	}
 	if resp.Error != "" {
-		return nil, nil, fmt.Errorf("error returned in body: %s", resp.Error)
+		return nil, fmt.Errorf("error returned in body: %s", resp.Error)
 	}
 
 	ret := &AccessKeyView{
@@ -158,13 +168,13 @@ func (a *Account) FindAccessKey(
 	} else {
 		var view FunctionCallPermissionView
 		if err := json.Unmarshal(raw, &view); err != nil {
-			return nil, nil, fmt.Errorf("unmarshaling permission: %v", err)
+			return nil, fmt.Errorf("unmarshaling permission: %v", err)
 		}
 		ret.FunctionCallPermissionView = &view
 		ret.PermissionType = FunctionCallPermissionType
 	}
 
-	return &pubKey, ret, nil
+	return ret, nil
 }
 
 // SignTransaction creates and signs a transaction from the supplied actions.
