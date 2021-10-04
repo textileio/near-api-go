@@ -61,6 +61,8 @@ type SyncInfo struct {
 	LatestBlockHeight int    `json:"latest_block_height"`
 	// TODO: make this time.Time and use custom json conversion.
 	LatestBlockTime string `json:"latest_block_time"`
+	LatestStateRoot string `json:"latest_state_root"`
+	Syncing         bool   `json:"syncing"`
 }
 
 // Version struct
