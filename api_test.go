@@ -4,7 +4,7 @@ import (
 	"context"
 
 	"github.com/ethereum/go-ethereum/rpc"
-	"github.com/gateway-fm/near-api-go/types"
+	"github.com/gateway-fm/near-api-go/config"
 	"github.com/stretchr/testify/require"
 
 	"testing"
@@ -65,7 +65,7 @@ func makeClient(t *testing.T) (*Client, func()) {
 	// )
 	// require.NoError(t, err)
 
-	config := &types.Config{
+	config := &config.Config{
 		RPCClient: rpcClient,
 		// Signer:    keys,
 		NetworkID: "testnet",

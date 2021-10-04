@@ -9,10 +9,10 @@ import (
 	"time"
 
 	"github.com/ethereum/go-ethereum/rpc"
+	"github.com/gateway-fm/near-api-go/config"
 	itypes "github.com/gateway-fm/near-api-go/internal/types"
 	"github.com/gateway-fm/near-api-go/keys"
 	"github.com/gateway-fm/near-api-go/transaction"
-	"github.com/gateway-fm/near-api-go/types"
 	"github.com/gateway-fm/near-api-go/util"
 	"github.com/mr-tron/base58/base58"
 	"github.com/near/borsh-go"
@@ -31,12 +31,12 @@ var (
 
 // Account provides functions for a single account.
 type Account struct {
-	config    *types.Config
+	config    *config.Config
 	accountID string
 }
 
 // NewAccount creates a new account.
-func NewAccount(config *types.Config, accountID string) *Account {
+func NewAccount(config *config.Config, accountID string) *Account {
 	return &Account{
 		config:    config,
 		accountID: accountID,

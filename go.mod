@@ -4,8 +4,10 @@ go 1.16
 
 require (
 	github.com/StackExchange/wmi v0.0.0-20190523213315-cbe66965904d // indirect
+	github.com/eteu-technologies/near-api-go v0.0.1
 	github.com/ethereum/go-ethereum v1.10.9
 	github.com/go-ole/go-ole v1.2.4 // indirect
+	github.com/google/gofuzz v1.2.0
 	github.com/mr-tron/base58 v1.2.0
 	github.com/near/borsh-go v0.3.0
 	github.com/stretchr/testify v1.7.0
@@ -17,6 +19,7 @@ require (
 	golang.org/x/tools v0.1.4 // indirect
 	gopkg.in/check.v1 v1.0.0-20201130134442-10cb98267c6c // indirect
 	gopkg.in/yaml.v2 v2.4.0 // indirect
+	lukechampine.com/uint128 v1.1.1
 )
 
 replace github.com/ethereum/go-ethereum => github.com/textileio/go-ethereum v1.10.3-0.20210413172519-62e8b38d82b1

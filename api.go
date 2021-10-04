@@ -5,11 +5,13 @@ import (
 	"encoding/base64"
 	"encoding/json"
 	"fmt"
+	"github.com/gateway-fm/near-api-go/models"
 
 	"github.com/ethereum/go-ethereum/rpc"
+
 	"github.com/gateway-fm/near-api-go/account"
+	"github.com/gateway-fm/near-api-go/config"
 	itypes "github.com/gateway-fm/near-api-go/internal/types"
-	"github.com/gateway-fm/near-api-go/types"
 	"github.com/gateway-fm/near-api-go/util"
 )
 
@@ -120,11 +122,11 @@ type NodeStatusResponse struct {
 
 // Client communicates with the NEAR API.
 type Client struct {
-	config *types.Config
+	config *config.Config
 }
 
 // NewClient creates a new Client.
-func NewClient(config *types.Config) (*Client, error) {
+func NewClient(config *config.Config) (*Client, error) {
 	return &Client{
 		config: config,
 	}, nil
@@ -331,4 +333,14 @@ func (c *Client) NodeStatus(ctx context.Context) (*NodeStatusResponse, error) {
 		return nil, fmt.Errorf("calling status rpc: %v", util.MapRPCError(err))
 	}
 	return &nodeStatusRes, nil
+}
+
+// NetworkInfo returns the current state of node network
+// connections (active peers, transmitted data, etc.)
+func (c *Client) NetworkInfo(ctx context.Context) (*models.NetworkInfo, error) {
+	var networkInfo models.NetworkInfo
+	if err := c.config.RPCClient.CallContext(ctx, &networkInfo, "network_info"); err != nil {
+		return nil, fmt.Errorf("calling network info rpc: %v", util.MapRPCError(err))
+	}
+	return &networkInfo, nil
 }
