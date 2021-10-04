@@ -4,8 +4,8 @@ import (
 	"context"
 
 	"github.com/ethereum/go-ethereum/rpc"
+	"github.com/gateway-fm/near-api-go/types"
 	"github.com/stretchr/testify/require"
-	"github.com/textileio/near-api-go/types"
 
 	"testing"
 )

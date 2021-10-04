@@ -4,9 +4,9 @@ import (
 	"encoding/base64"
 	"testing"
 
+	"github.com/gateway-fm/near-api-go/keys"
 	"github.com/near/borsh-go"
 	"github.com/stretchr/testify/require"
-	"github.com/textileio/near-api-go/keys"
 )
 
 func TestIt(t *testing.T) {

@@ -21,7 +21,7 @@ We're currently relying on [our fork of go-ethereum's JSON RPC client](https://g
 ## Install
 
 ```
-go get github.com/textileio/near-api-go
+go get github.com/gateway-fm/near-api-go
 ```
 
 ## Usage
@@ -30,10 +30,10 @@ Import the required modules.
 
 ```golang
 import (
-  api "github.com/textileio/near-api-go"
-  "github.com/textileio/near-api-go/keys"
-  "github.com/textileio/near-api-go/transaction"
-  "github.com/textileio/near-api-go/types"
+  api "github.com/gateway-fm/near-api-go"
+  "github.com/gateway-fm/near-api-go/keys"
+  "github.com/gateway-fm/near-api-go/transaction"
+  "github.com/gateway-fm/near-api-go/types"
   "github.com/ethereum/go-ethereum/rpc"
 )
 
@@ -84,11 +84,11 @@ res, err := client.Account("<client account id>").FunctionCall(
 )
 ```
 
-Check out the [API docs](https://pkg.go.dev/github.com/textileio/near-api-go) to see all that is possible.
+Check out the [API docs](https://pkg.go.dev/github.com/gateway-fm/near-api-go) to see all that is possible.
 
 ## API
 
-[https://pkg.go.dev/github.com/textileio/near-api-go](https://pkg.go.dev/github.com/textileio/near-api-go)
+[https://pkg.go.dev/github.com/gateway-fm/near-api-go](https://pkg.go.dev/github.com/gateway-fm/near-api-go)
 
 ## Maintainers
 

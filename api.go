@@ -7,10 +7,10 @@ import (
 	"fmt"
 
 	"github.com/ethereum/go-ethereum/rpc"
-	"github.com/textileio/near-api-go/account"
-	itypes "github.com/textileio/near-api-go/internal/types"
-	"github.com/textileio/near-api-go/types"
-	"github.com/textileio/near-api-go/util"
+	"github.com/gateway-fm/near-api-go/account"
+	itypes "github.com/gateway-fm/near-api-go/internal/types"
+	"github.com/gateway-fm/near-api-go/types"
+	"github.com/gateway-fm/near-api-go/util"
 )
 
 // CallFunctionResponse holds information about the result of a function call.
@@ -63,9 +63,57 @@ type SyncInfo struct {
 	LatestBlockTime string `json:"latest_block_time"`
 }
 
+// Version struct
+type Version struct {
+	Build   string `json:"build"`
+	Version string `json:"version"`
+}
+
+// Validators array
+type Validators []Validator
+
+// ValidatorsResponse struct
+type ValidatorsResponse struct {
+	CurrentFishermans []Fisherman    `json:"current_fishermen,omitempty"`
+	NextFishermans    []Fisherman    `json:"next_fishermen,omitempty"`
+	CurrentValidators Validators     `json:"current_validators,omitempty"`
+	NextValidators    Validators     `json:"next_validators,omitempty"`
+	CurrentProposal   string         `json:"current_proposal,omitempty"`
+	EpochStartHeight  int64          `json:"epoch_start_height"`
+	PrevEpochKickout  []EpochKickout `json:"prev_epoch_kickout"`
+}
+
+// EpochKickout struct
+type EpochKickout struct {
+	AccountID string                 `json:"account_id"`
+	Reason    map[string]interface{} `json:"reason"`
+}
+
+// Fisherman struct
+type Fisherman struct {
+	AccountID string `json:"account_id"`
+	PublicKey string `json:"public_key"`
+	Stake     string `json:"stake"`
+}
+
+// Validator struct
+type Validator struct {
+	AccountID         string  `json:"account_id"`
+	IsSlashed         bool    `json:"is_slashed"`
+	ExpectedBlocksNum int64   `json:"num_expected_blocks,omitempty"`
+	ProducedBlocksNum int64   `json:"num_produced_blocks,omitempty"`
+	PublicKey         string  `json:"public_key,omitempty"`
+	Shards            []int64 `json:"shards,omitempty"`
+	Stake             string  `json:"stake,omitempty"`
+}
+
 // NodeStatusResponse holds information about node status.
 type NodeStatusResponse struct {
-	SyncInfo *SyncInfo `json:"sync_info"`
+	ChainID    string     `json:"chain_id"`
+	RPCAddr    string     `json:"rpc_addr"`
+	SyncInfo   SyncInfo   `json:"sync_info"`
+	Validators Validators `json:"validators"`
+	Version    Version    `json:"version"`
 }
 
 // Client communicates with the NEAR API.

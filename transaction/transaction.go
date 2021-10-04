@@ -6,8 +6,8 @@ import (
 	"fmt"
 	"math/big"
 
+	"github.com/gateway-fm/near-api-go/keys"
 	"github.com/near/borsh-go"
-	"github.com/textileio/near-api-go/keys"
 )
 
 var (
