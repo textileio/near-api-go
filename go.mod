@@ -4,7 +4,6 @@ go 1.16
 
 require (
 	github.com/StackExchange/wmi v0.0.0-20190523213315-cbe66965904d // indirect
-	github.com/eteu-technologies/near-api-go v0.0.1
 	github.com/ethereum/go-ethereum v1.10.9
 	github.com/go-ole/go-ole v1.2.4 // indirect
 	github.com/google/gofuzz v1.2.0

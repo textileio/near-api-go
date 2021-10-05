@@ -2,8 +2,7 @@ package account
 
 import (
 	"encoding/json"
-
-	"github.com/gateway-fm/near-api-go/internal/types"
+	"github.com/gateway-fm/near-api-go/types"
 )
 
 // Value models a state key-value pair.

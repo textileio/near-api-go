@@ -2,8 +2,7 @@ package account
 
 import (
 	"encoding/base64"
-
-	itypes "github.com/gateway-fm/near-api-go/internal/types"
+	itypes "github.com/gateway-fm/near-api-go/types"
 )
 
 // ViewStateOption controls the behavior when calling ViewState.

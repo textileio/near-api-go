@@ -5,12 +5,12 @@ import (
 	"encoding/base64"
 	"encoding/json"
 	"fmt"
+	itypes "github.com/gateway-fm/near-api-go/types"
 	"strings"
 	"time"
 
 	"github.com/ethereum/go-ethereum/rpc"
 	"github.com/gateway-fm/near-api-go/config"
-	itypes "github.com/gateway-fm/near-api-go/internal/types"
 	"github.com/gateway-fm/near-api-go/keys"
 	"github.com/gateway-fm/near-api-go/transaction"
 	"github.com/gateway-fm/near-api-go/util"

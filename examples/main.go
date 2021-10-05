@@ -3,6 +3,7 @@ package main
 import (
 	"context"
 	"fmt"
+	"github.com/gateway-fm/near-api-go/account"
 
 	"github.com/ethereum/go-ethereum/rpc"
 	api "github.com/gateway-fm/near-api-go"
@@ -39,4 +40,13 @@ func main() {
 
 	fmt.Println(netInfo.NumActivePeers)
 	fmt.Println(netInfo.ReceivedBytesPerSec)
+
+	acc := account.NewAccount(cfg, "andskur.near")
+
+	view, err := acc.State(context.Background())
+	if err != nil {
+		panic(err)
+	}
+
+	fmt.Println(view.Amount)
 }
