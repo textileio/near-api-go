@@ -5,7 +5,7 @@ import (
 
 	fuzz "github.com/google/gofuzz"
 
-	. "github.com/gateway-fm/near-api-go/pkg/types"
+	. "github.com/gateway-fm/near-api-go/types"
 )
 
 func TestNEARToYocto(t *testing.T) {
