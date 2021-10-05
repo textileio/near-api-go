@@ -20,7 +20,7 @@ func (c *CryptoHash) UnmarshalJSON(b []byte) error {
 
 	data, err := base58.Decode(string(s))
 	if err != nil {
-		return err
+		return fmt.Errorf("decode base58Hash: %w", err)
 	}
 
 	if l := len(data); l != sha256.Size {
@@ -48,7 +48,7 @@ func NewCryptoHash(data []byte) CryptoHash {
 func NewCryptoHashFromBase58(blob string) (ch CryptoHash, err error) {
 	bytes, err := base58.Decode(blob)
 	if err != nil {
-		return
+		return [sha256.Size]byte{}, fmt.Errorf("decode base58Hash: %w", err)
 	}
 
 	if len(bytes) != sha256.Size {

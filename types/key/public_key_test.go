@@ -3,7 +3,7 @@ package key_test
 import (
 	"testing"
 
-	"github.com/eteu-technologies/near-api-go/pkg/types/key"
+	"github.com/gateway-fm/near-api-go/types/key"
 )
 
 func TestED25519Key(t *testing.T) {

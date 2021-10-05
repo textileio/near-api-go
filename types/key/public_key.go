@@ -5,10 +5,11 @@ import (
 	"encoding/hex"
 	"encoding/json"
 	"fmt"
+	"strings"
 
 	"github.com/mr-tron/base58"
 
-	"github.com/eteu-technologies/near-api-go/pkg/types/signature"
+	"github.com/gateway-fm/near-api-go/types/signature"
 )
 
 // TODO: SECP256K1
@@ -36,9 +37,17 @@ func (p *PublicKey) UnmarshalJSON(b []byte) error {
 		return err
 	}
 
+	fmt.Println(s)
+
+	keyParts := strings.Split(s, ":")
+
+	if len(keyParts) > 1 {
+		s = keyParts[1]
+	}
+
 	dec, err := base58.Decode(s)
 	if err != nil {
-		return err
+		return fmt.Errorf("failed to decode public key: %w", err)
 	}
 
 	*p = PublicKey{}

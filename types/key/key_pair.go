@@ -9,7 +9,7 @@ import (
 
 	"github.com/mr-tron/base58"
 
-	"github.com/eteu-technologies/near-api-go/pkg/types/signature"
+	"github.com/gateway-fm/near-api-go/types/signature"
 )
 
 type KeyPair struct {

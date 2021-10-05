@@ -12,28 +12,22 @@ import (
 
 // NetworkInfo holds network information
 type NetworkInfo struct {
-	ActivePeers         []FullPeerInfo  `json:"active_peers"`
+	ActivePeers         []*PeerInfo     `json:"active_peers"`
 	NumActivePeers      uint            `json:"num_active_peers"`
 	PeerMaxCount        uint32          `json:"peer_max_count"`
-	HighestHeightPeers  []FullPeerInfo  `json:"highest_height_peers"`
+	HighestHeightPeers  []*PeerInfo     `json:"highest_height_peers"`
 	SentBytesPerSec     uint64          `json:"sent_bytes_per_sec"`
 	ReceivedBytesPerSec uint64          `json:"received_bytes_per_sec"`
-	KnownProducers      []KnownProducer `json:"known_producers"`
-	MetricRecorder      MetricRecorder  `json:"metric_recorder"`
+	KnownProducers      []*PeerInfo     `json:"known_producers"`
+	MetricRecorder      *MetricRecorder `json:"metric_recorder"`
 	PeerCounter         uint            `json:"peer_counter"`
-}
-
-type FullPeerInfo struct {
-	PeerInfo  PeerInfo      `json:"peer_info"`
-	ChainInfo PeerChainInfo `json:"chain_info"`
-	EdgeInfo  EdgeInfo      `json:"edge_info"`
 }
 
 // PeerInfo holds peer information
 type PeerInfo struct {
-	ID        key.PeerID       `json:"id"`
-	Addr      *string          `json:"addr"`
-	AccountID *types.AccountID `json:"account_id"`
+	ID        string          `json:"id"`
+	Addr      string          `json:"addr"`
+	AccountID types.AccountID `json:"account_id"`
 }
 
 // PeerChainInfo contains peer chain information. This is derived from PeerCHainInfoV2 in nearcore
