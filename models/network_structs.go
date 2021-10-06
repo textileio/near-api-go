@@ -12,15 +12,15 @@ import (
 
 // NetworkInfo holds network information
 type NetworkInfo struct {
-	ActivePeers         []*PeerInfo     `json:"active_peers"`
-	NumActivePeers      uint            `json:"num_active_peers"`
-	PeerMaxCount        uint32          `json:"peer_max_count"`
-	HighestHeightPeers  []*PeerInfo     `json:"highest_height_peers"`
-	SentBytesPerSec     uint64          `json:"sent_bytes_per_sec"`
-	ReceivedBytesPerSec uint64          `json:"received_bytes_per_sec"`
-	KnownProducers      []*PeerInfo     `json:"known_producers"`
-	MetricRecorder      *MetricRecorder `json:"metric_recorder"`
-	PeerCounter         uint            `json:"peer_counter"`
+	ActivePeers         []*PeerInfo      `json:"active_peers"`
+	NumActivePeers      uint             `json:"num_active_peers"`
+	PeerMaxCount        uint32           `json:"peer_max_count"`
+	HighestHeightPeers  []*PeerInfo      `json:"highest_height_peers"`
+	SentBytesPerSec     uint64           `json:"sent_bytes_per_sec"`
+	ReceivedBytesPerSec uint64           `json:"received_bytes_per_sec"`
+	KnownProducers      []*KnownProducer `json:"known_producers"`
+	MetricRecorder      *MetricRecorder  `json:"metric_recorder"`
+	PeerCounter         uint             `json:"peer_counter"`
 }
 
 // PeerInfo holds peer information
