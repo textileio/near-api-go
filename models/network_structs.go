@@ -51,8 +51,8 @@ type EdgeInfo struct {
 // KnownProducer is basically PeerInfo, but AccountID is known
 type KnownProducer struct {
 	AccountID types.AccountID `json:"account_id"`
-	Addr      *string         `json:"addr"`
-	PeerID    key.PeerID      `json:"peer_id"`
+	Addr      string          `json:"addr"`
+	PeerID    string          `json:"peer_id"`
 }
 
 // TODO: chain/network/src/recorder.rs
