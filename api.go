@@ -344,3 +344,12 @@ func (c *Client) NetworkInfo(ctx context.Context) (*models.NetworkInfo, error) {
 	}
 	return &networkInfo, nil
 }
+
+func (c *Client) GetBlockResult(ctx context.Context) (*itypes.BlockResult, error) {
+	var blockresultinfo itypes.BlockResult
+	if err := c.config.RPCClient.CallContext(ctx, &blockresultinfo, "block", rpc.NewNamedParams(itypes.BlockRequest{Finality: "final"})); err != nil {
+		return nil, fmt.Errorf("getting block returned an error: %w", err)
+	}
+
+	return &blockresultinfo, nil
+}

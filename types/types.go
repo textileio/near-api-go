@@ -92,7 +92,7 @@ type Chunk struct {
 
 // BlockResult contains information about a block result.
 type BlockResult struct {
-	Author string      `json:"author"`
-	Header BlockHeader `json:"header"`
-	Chunks []Chunk     `json:"chunks"`
+	Author string       `json:"author"`
+	Header *BlockHeader `json:"header"`
+	Chunks []*Chunk     `json:"chunks"`
 }
