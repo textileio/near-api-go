@@ -5,10 +5,9 @@ import (
 	"encoding/base64"
 	"encoding/json"
 	"fmt"
+	"github.com/ethereum/go-ethereum/rpc"
 	"github.com/gateway-fm/near-api-go/models"
 	itypes "github.com/gateway-fm/near-api-go/types"
-
-	"github.com/ethereum/go-ethereum/rpc"
 
 	"github.com/gateway-fm/near-api-go/account"
 	"github.com/gateway-fm/near-api-go/config"
@@ -352,4 +351,17 @@ func (c *Client) GetBlockResult(ctx context.Context) (*itypes.BlockResult, error
 	}
 
 	return &blockresultinfo, nil
+}
+
+type GasPriceOpts struct {
+	Blockheight int64
+	Blockhash   string
+}
+
+func (c *Client) GetGasPrice(ctx context.Context, gp *GasPriceOpts) (*itypes.BlockHeader, error) {
+	var gasprice itypes.BlockHeader
+	if err := c.config.RPCClient.CallContext(ctx, &gasprice, "gas_price", gp); err != nil {
+		return nil, fmt.Errorf("getting gasprice returned an error: %w", err)
+	}
+	return &gasprice, nil
 }
