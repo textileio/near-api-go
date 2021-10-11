@@ -2,30 +2,30 @@ package models
 
 // ProtocolConfig holds protocol config information
 type ProtocolConfig struct {
-	AvgHiddenValidatorSeatsPerShard []uint         `json:"avg_hidden_validator_seats_per_shard"`
-	BlockProducerKickoutThreshold   uint           `json:"block_producer_kickout_threshold"`
+	AvgHiddenValidatorSeatsPerShard []uint32       `json:"avg_hidden_validator_seats_per_shard"`
+	BlockProducerKickoutThreshold   uint32         `json:"block_producer_kickout_threshold"`
 	ChainId                         string         `json:"chain_id"`
-	ChunkProducerKickoutThreshold   uint           `json:"chunk_producer_kickout_threshold"`
+	ChunkProducerKickoutThreshold   uint32         `json:"chunk_producer_kickout_threshold"`
 	DynamicResharding               bool           `json:"dynamic_resharding"`
 	EpochLength                     uint32         `json:"epoch_length"`
 	FishermenThreshold              string         `json:"fishermen_threshold"`
 	GasLimit                        uint64         `json:"gas_limit"`
-	GasPriceAdjustmentRate          []uint         `json:"gas_price_adjustment_rate"`
+	GasPriceAdjustmentRate          []uint32       `json:"gas_price_adjustment_rate"`
 	GenesisHeight                   uint64         `json:"genesis_height"`
 	GenesisTime                     string         `json:"genesis_time"`
 	MaxGasPrice                     string         `json:"max_gas_price"`
-	MaxInflationRate                []uint         `json:"max_inflation_rate"`
+	MaxInflationRate                []uint32       `json:"max_inflation_rate"`
 	MinGasPrice                     string         `json:"min_gas_price"`
-	MinimumStakeDivisor             uint           `json:"minimum_stake_divisor"`
+	MinimumStakeDivisor             uint32         `json:"minimum_stake_divisor"`
 	NumBlockProducerSeats           uint32         `json:"num_block_producer_seats"`
-	NumBlockProducerSeatsPerShard   []uint         `json:"num_block_producer_seats_per_shard"`
+	NumBlockProducerSeatsPerShard   []uint32       `json:"num_block_producer_seats_per_shard"`
 	NumBlocksPerYear                uint64         `json:"num_blocks_per_year"`
-	OnlineMaxThreshold              []uint         `json:"online_max_threshold"`
-	OnlineMinThreshold              []uint         `json:"online_min_threshold"`
-	ProtocolRewardRate              []uint         `json:"protocol_reward_rate"`
+	OnlineMaxThreshold              []uint32       `json:"online_max_threshold"`
+	OnlineMinThreshold              []uint32       `json:"online_min_threshold"`
+	ProtocolRewardRate              []uint32       `json:"protocol_reward_rate"`
 	ProtocolTreasuryAccount         string         `json:"protocol_treasury_account"`
-	ProtocolUpgradeStakeThreshold   []uint         `json:"protocol_upgrade_stake_threshold"`
-	ProtocolVersion                 uint           `json:"protocol_version"`
+	ProtocolUpgradeStakeThreshold   []uint32       `json:"protocol_upgrade_stake_threshold"`
+	ProtocolVersion                 uint32         `json:"protocol_version"`
 	TransactionValidityPeriod       uint32         `json:"transaction_validity_period"`
 	RuntimeConfig                   *RuntimeConfig `json:"runtime_config"`
 }
@@ -38,16 +38,16 @@ type RuntimeConfig struct {
 }
 
 type AccountCreationConfig struct {
-	MinAllowedTopLevelAccountLength uint   `json:"min_allowed_top_level_account_length"`
+	MinAllowedTopLevelAccountLength uint32 `json:"min_allowed_top_level_account_length"`
 	RegistrarAccountId              string `json:"registrar_account_id"`
 }
 
 type TransactionCosts struct {
 	ActionCreationConfig              *ActionCreationConfig      `json:"action_creation_config"`
 	ActionReceiptCreationConfig       *Cost                      `json:"action_receipt_creation_config"`
-	BurntGasReward                    []uint                     `json:"burnt_gas_reward"`
+	BurntGasReward                    []uint32                   `json:"burnt_gas_reward"`
 	DataReceiptCreationConfig         *DataReceiptCreationConfig `json:"data_receipt_creation_config"`
-	PessimisticGasPriceInflationRatio []uint                     `json:"pessimistic_gas_price_inflation_ratio"`
+	PessimisticGasPriceInflationRatio []uint32                   `json:"pessimistic_gas_price_inflation_ratio"`
 	StorageUsageConfig                *StorageUsageConfig        `json:"storage_usage_config"`
 }
 
@@ -76,8 +76,8 @@ type DataReceiptCreationConfig struct {
 }
 
 type StorageUsageConfig struct {
-	NumBytesAccount     uint `json:"num_bytes_account"`
-	NumExtraBytesRecord uint `json:"num_extra_bytes_record"`
+	NumBytesAccount     uint32 `json:"num_bytes_account"`
+	NumExtraBytesRecord uint32 `json:"num_extra_bytes_record"`
 }
 
 type Cost struct {
@@ -88,7 +88,7 @@ type Cost struct {
 
 type WasmConfig struct {
 	ExtCosts      *ExtCosts    `json:"ext_costs"`
-	GrowMemCost   uint         `json:"grow_mem_cost"`
+	GrowMemCost   uint32       `json:"grow_mem_cost"`
 	LimitConfig   *LimitConfig `json:"limit_config"`
 	RegularOpCost uint64       `json:"regular_op_cost"`
 }
