@@ -353,6 +353,15 @@ func (c *Client) GetBlockResult(ctx context.Context) (*itypes.BlockResult, error
 	return &blockresultinfo, nil
 }
 
+func (c *Client) GetProtocolConfig(ctx context.Context) (*models.ProtocolConfig, error) {
+	var protocolConfig models.ProtocolConfig
+	if err := c.config.RPCClient.CallContext(ctx, &protocolConfig, "EXPERIMENTAL_protocol_config", rpc.NewNamedParams(itypes.BlockRequest{Finality: "final"})); err != nil {
+		return nil, fmt.Errorf("calling protocol config rpc: %v", util.MapRPCError(err))
+	}
+
+	return &protocolConfig, nil
+}
+
 type GasPriceOpts struct {
 	Blockheight int64
 	Blockhash   string

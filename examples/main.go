@@ -2,6 +2,7 @@ package main
 
 import (
 	"context"
+	"encoding/json"
 	"fmt"
 	"github.com/gateway-fm/near-api-go/account"
 
@@ -49,4 +50,16 @@ func main() {
 	}
 
 	fmt.Println(view.Amount)
+
+	protocolConfig, err := apiN.GetProtocolConfig(context.Background())
+	if err != nil {
+		panic(err)
+	}
+
+	b, err := json.Marshal(protocolConfig)
+	if err != nil {
+		fmt.Println(err)
+		return
+	}
+	fmt.Println(string(b))
 }
