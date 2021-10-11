@@ -7,6 +7,7 @@ import (
 	"fmt"
 	"github.com/ethereum/go-ethereum/rpc"
 	"github.com/gateway-fm/near-api-go/models"
+	"github.com/gateway-fm/near-api-go/transaction"
 	itypes "github.com/gateway-fm/near-api-go/types"
 
 	"github.com/gateway-fm/near-api-go/account"
@@ -353,15 +354,12 @@ func (c *Client) GetBlockResult(ctx context.Context) (*itypes.BlockResult, error
 	return &blockresultinfo, nil
 }
 
-type GasPriceOpts struct {
-	Blockheight int64
-	Blockhash   string
-}
+func (c *Client) SendSignedTx(ctx context.Context, tx *transaction.SignedTransaction) (*account.FinalExecutionOutcome, error) {
+	var res account.FinalExecutionOutcome
 
-func (c *Client) GetGasPrice(ctx context.Context, gp *GasPriceOpts) (*itypes.BlockHeader, error) {
-	var gasprice itypes.BlockHeader
-	if err := c.config.RPCClient.CallContext(ctx, &gasprice, "gas_price", gp); err != nil {
-		return nil, fmt.Errorf("getting gasprice returned an error: %w", err)
+	if err := c.config.RPCClient.CallContext(ctx, &res, "broadcast_tx_commit", tx); err != nil {
+		return nil, fmt.Errorf("calling broadcast_tx_commit returned an error: %w", err)
+
 	}
-	return &gasprice, nil
+	return &res, nil
 }
