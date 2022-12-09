@@ -2,12 +2,10 @@ package types
 
 import (
 	"github.com/ethereum/go-ethereum/rpc"
-	"github.com/textileio/near-api-go/keys"
 )
 
 // Config configures the NEAR client.
 type Config struct {
-	Signer    keys.KeyPair // TODO: model the Signer to wrap KeyPair.
 	NetworkID string
 	RPCClient *rpc.Client
 
